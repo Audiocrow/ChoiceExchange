@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,20 +19,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EzE-0D-Q1Q"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9vC-Jp-MgF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P10-b4-X7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-532" y="37"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="uHH-fp-anv">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="JSi-5b-lKB" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2m0-qe-Vgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="89" y="36"/>
+            <point key="canvasLocation" x="-30" y="26"/>
         </scene>
         <!--View Exchange Rates-->
         <scene sceneID="tne-QT-ifu">
@@ -53,14 +46,27 @@
                                 <rect key="frame" x="209" y="101" width="150" height="149"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOn-hy-Pgw">
+                                <rect key="frame" x="195" y="617" width="164" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="View&amp;Manage Favorites">
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hgE-oq-3o5" kind="show" id="K1E-Tw-HqU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mOn-hy-Pgw" secondAttribute="bottom" constant="20" id="dlA-Zy-boo"/>
+                            <constraint firstItem="mOn-hy-Pgw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="sIU-OM-mlr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="View Exchange Rates" id="p7Y-jk-F3r"/>
                     <connections>
                         <outlet property="HomeChoicePicker" destination="hcv-9y-SAZ" id="Ynb-2S-W5h"/>
                         <outlet property="foreignChoicePicker" destination="41f-TS-bsY" id="g7a-u9-zPv"/>
-                        <segue destination="hgE-oq-3o5" kind="show" id="CYr-ZY-PKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -70,7 +76,7 @@
         <!--Choose Favorite Currencies-->
         <scene sceneID="veI-pK-1Xw">
             <objects>
-                <viewController id="hgE-oq-3o5" sceneMemberID="viewController">
+                <viewController id="hgE-oq-3o5" customClass="FavoritesViewController" customModule="ChoiceExchange" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IGA-C8-Vtf"/>
                         <viewControllerLayoutGuide type="bottom" id="u1J-pU-E55"/>
