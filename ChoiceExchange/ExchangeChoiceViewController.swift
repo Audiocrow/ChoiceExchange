@@ -14,6 +14,7 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     var homeChoices = ["Red", "Green", "Blue"]
     @IBOutlet weak var foreignChoicePicker: UIPickerView!
     var foreignChoices = ["Orange", "Teal", "Purple"]
+    //Selected Choices: homeChoice = homeChoices[homeChoicePicker.selectedRowInComponent(0)]
     
     override func viewDidLoad() {
         super.viewDidLoad()

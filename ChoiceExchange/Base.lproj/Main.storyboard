@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="r3E-AD-woP">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,31 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Exchange Choice View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Neq-cp-3rl">
+            <objects>
+                <navigationController id="r3E-AD-woP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v1i-ds-v78">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EzE-0D-Q1Q"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P10-b4-X7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-532" y="37"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="uHH-fp-anv">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="JSi-5b-lKB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2m0-qe-Vgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="89" y="36"/>
+        </scene>
+        <!--View Exchange Rates-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ExchangeChoiceViewController" customModule="ChoiceExchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,14 +56,37 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="View Exchange Rates" id="p7Y-jk-F3r"/>
                     <connections>
                         <outlet property="HomeChoicePicker" destination="hcv-9y-SAZ" id="Ynb-2S-W5h"/>
                         <outlet property="foreignChoicePicker" destination="41f-TS-bsY" id="g7a-u9-zPv"/>
+                        <segue destination="hgE-oq-3o5" kind="show" id="CYr-ZY-PKk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="37.331334332833585"/>
+            <point key="canvasLocation" x="727" y="36"/>
+        </scene>
+        <!--Choose Favorite Currencies-->
+        <scene sceneID="veI-pK-1Xw">
+            <objects>
+                <viewController id="hgE-oq-3o5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IGA-C8-Vtf"/>
+                        <viewControllerLayoutGuide type="bottom" id="u1J-pU-E55"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mg3-1E-bKU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Choose Favorite Currencies" id="B8c-Po-Kjm">
+                        <barButtonItem key="backBarButtonItem" title="Exchange Rates" id="f2i-Cx-u0E"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nN-9V-Ue3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1417" y="36"/>
         </scene>
     </scenes>
 </document>
