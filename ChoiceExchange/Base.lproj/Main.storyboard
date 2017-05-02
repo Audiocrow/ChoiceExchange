@@ -53,7 +53,7 @@
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hgE-oq-3o5" kind="show" id="K1E-Tw-HqU"/>
+                                    <segue destination="pmb-5x-tr0" kind="show" id="XAI-6f-uie"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,26 +73,75 @@
             </objects>
             <point key="canvasLocation" x="727" y="36"/>
         </scene>
-        <!--Choose Favorite Currencies-->
-        <scene sceneID="veI-pK-1Xw">
+        <!--Favorites View Controller-->
+        <scene sceneID="0ic-W5-DcG">
             <objects>
-                <viewController id="hgE-oq-3o5" customClass="FavoritesViewController" customModule="ChoiceExchange" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IGA-C8-Vtf"/>
-                        <viewControllerLayoutGuide type="bottom" id="u1J-pU-E55"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mg3-1E-bKU">
+                <tableViewController id="pmb-5x-tr0" customClass="FavoritesViewController" customModule="ChoiceExchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7TW-to-7MZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Choose Favorite Currencies" id="B8c-Po-Kjm">
-                        <barButtonItem key="backBarButtonItem" title="Exchange Rates" id="f2i-Cx-u0E"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0nN-9V-Ue3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteCell" rowHeight="50" id="Cdi-A0-1nt" customClass="FavoriteCell" customModule="ChoiceExchange" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cdi-A0-1nt" id="r38-Kp-SaL">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOh-vb-RrU">
+                                            <rect key="frame" x="8" y="7" width="100" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PAe-YX-eko">
+                                            <rect key="frame" x="318" y="18" width="51" height="31"/>
+                                        </switch>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="56Z-Nb-z3K">
+                                            <rect key="frame" x="247" y="18" width="51" height="31"/>
+                                        </switch>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-SA-6d3">
+                                            <rect key="frame" x="250" y="0.0" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Foreign" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKA-wK-epb">
+                                            <rect key="frame" x="321" y="0.0" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="PAe-YX-eko" secondAttribute="trailing" constant="8" id="OU7-Tw-CXG"/>
+                                        <constraint firstItem="PAe-YX-eko" firstAttribute="leading" secondItem="OKA-wK-epb" secondAttribute="trailing" constant="-45" id="Ug5-La-F0T"/>
+                                        <constraint firstItem="pnz-SA-6d3" firstAttribute="centerX" secondItem="56Z-Nb-z3K" secondAttribute="centerX" id="Vge-wr-F7c"/>
+                                        <constraint firstItem="bOh-vb-RrU" firstAttribute="leading" secondItem="r38-Kp-SaL" secondAttribute="leading" constant="8" id="WpB-DP-2aW"/>
+                                        <constraint firstItem="OKA-wK-epb" firstAttribute="centerX" secondItem="PAe-YX-eko" secondAttribute="centerX" id="cL1-2P-TVE"/>
+                                        <constraint firstItem="bOh-vb-RrU" firstAttribute="centerY" secondItem="r38-Kp-SaL" secondAttribute="centerY" id="gyQ-Kv-QBM"/>
+                                        <constraint firstItem="PAe-YX-eko" firstAttribute="leading" secondItem="56Z-Nb-z3K" secondAttribute="trailing" constant="22" id="nEf-C5-vik"/>
+                                        <constraint firstAttribute="bottom" secondItem="56Z-Nb-z3K" secondAttribute="bottom" id="u49-Ds-HEr"/>
+                                        <constraint firstAttribute="bottom" secondItem="PAe-YX-eko" secondAttribute="bottom" id="w0S-SE-bzc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ForeignSwitch" destination="PAe-YX-eko" id="NZd-s5-O7k"/>
+                                    <outlet property="HomeSwitch" destination="56Z-Nb-z3K" id="Hmd-Xo-zqM"/>
+                                    <outlet property="SymbolLabel" destination="bOh-vb-RrU" id="yUA-zD-hoE"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pmb-5x-tr0" id="CSb-PS-rHt"/>
+                            <outlet property="delegate" destination="pmb-5x-tr0" id="EQf-v7-zqB"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9yB-h7-iEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="36"/>
+            <point key="canvasLocation" x="1533.5999999999999" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>

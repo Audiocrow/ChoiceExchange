@@ -21,6 +21,10 @@ struct Currency {
 
 class CurrenciesHolder {
     var available=[Currency]();
-    private init() {}
+    private init() {
+        available.append(Currency("USD", "American dollar"));
+        available.append(Currency("EUR", "Euro"));
+        available.append(Currency("JPY", "Japanese Yen"));
+    }
     static let Currencies = CurrenciesHolder()
 }
