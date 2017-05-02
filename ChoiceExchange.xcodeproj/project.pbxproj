@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63AD0F4B1EB8239B00DEEBC4 /* CurrencyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AD0F4A1EB8239B00DEEBC4 /* CurrencyData.swift */; };
 		63B66D1B1EA5B9A10095B6E3 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B66D1A1EA5B9A10095B6E3 /* FavoritesViewController.swift */; };
 		63F046AE1E933E2900D15199 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F046AD1E933E2900D15199 /* AppDelegate.swift */; };
 		63F046B01E933E2900D15199 /* ExchangeChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F046AF1E933E2900D15199 /* ExchangeChoiceViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		63AD0F4A1EB8239B00DEEBC4 /* CurrencyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyData.swift; sourceTree = "<group>"; };
 		63B66D1A1EA5B9A10095B6E3 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		63F046AA1E933E2900D15199 /* ChoiceExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoiceExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F046AD1E933E2900D15199 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				63F046AD1E933E2900D15199 /* AppDelegate.swift */,
 				63F046AF1E933E2900D15199 /* ExchangeChoiceViewController.swift */,
 				63F046B11E933E2900D15199 /* Main.storyboard */,
+				63AD0F4A1EB8239B00DEEBC4 /* CurrencyData.swift */,
 				63B66D1A1EA5B9A10095B6E3 /* FavoritesViewController.swift */,
 				63F046B41E933E2900D15199 /* Assets.xcassets */,
 				63F046B61E933E2900D15199 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				63F046B01E933E2900D15199 /* ExchangeChoiceViewController.swift in Sources */,
 				63B66D1B1EA5B9A10095B6E3 /* FavoritesViewController.swift in Sources */,
+				63AD0F4B1EB8239B00DEEBC4 /* CurrencyData.swift in Sources */,
 				63F046AE1E933E2900D15199 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
