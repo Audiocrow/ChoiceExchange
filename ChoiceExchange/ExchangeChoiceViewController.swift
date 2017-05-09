@@ -18,6 +18,8 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //var fileManager = FileManager()
+        //var userFile = "Library/Application Support/choiceexchange"
         homeChoicePicker.dataSource = self
         homeChoicePicker.delegate = self
         foreignChoicePicker.dataSource = self
