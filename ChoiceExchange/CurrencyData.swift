@@ -11,11 +11,13 @@ import Foundation
 struct Currency {
     let symbol: String;
     let description: String;
-    var favorite: Bool;
+    var home: Bool; //A selected/favorite home currency?
+    var foreign: Bool; //A selected/favorite foreign currency?
     init(_ symbol:String, _ desc:String) {
         self.symbol=symbol;
         self.description=desc;
-        favorite=false;
+        home = false;
+        foreign=false;
     }
 }
 

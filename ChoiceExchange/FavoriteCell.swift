@@ -23,5 +23,28 @@ class FavoriteCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    @IBAction func switchChanged(_ sender: UISwitch) {
+        if let table = self.superview as? UITableView {
+            if let indexPath = table.indexPath(for: self) {
+                let data = CurrenciesHolder.Currencies;
+                if(sender == HomeSwitch) {
+                    data.available[indexPath.row].home = HomeSwitch.isOn;
+                    if HomeSwitch.isOn { data.available[indexPath.row].foreign = false; }
+                }
+                else if(sender == ForeignSwitch) {
+                    data.available[indexPath.row].foreign = ForeignSwitch.isOn;
+                    if ForeignSwitch.isOn { data.available[indexPath.row].home = false; }
+                }
+            }
+            
+        }
+        if(sender == HomeSwitch && HomeSwitch.isOn && ForeignSwitch.isOn) {
+            ForeignSwitch.setOn(false,animated: true);
+        }
+        else if(sender == ForeignSwitch && ForeignSwitch.isOn && HomeSwitch.isOn) {
+            HomeSwitch.setOn(false, animated: true);
+        }
+    }
 
 }

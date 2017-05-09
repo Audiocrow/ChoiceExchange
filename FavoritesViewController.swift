@@ -28,7 +28,6 @@ class FavoritesViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -38,13 +37,24 @@ class FavoritesViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as? FavoriteCell else {
-            fatalError("Dequeued cell is not our custom FavoriteCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath);
+        if let customCell = cell as? FavoriteCell {
+            let data = CurrenciesHolder.Currencies;
+            customCell.HomeSwitch.setOn(data.available[indexPath.row].home, animated: false)
+            customCell.ForeignSwitch.setOn(data.available[indexPath.row].foreign, animated: false)
+            customCell.SymbolLabel.text = CurrenciesHolder.Currencies.available[indexPath.row].symbol;
         }
-        cell.SymbolLabel.text = CurrenciesHolder.Currencies.available[indexPath.row].symbol;
         return cell
     }
-
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell")
+        return cell;
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50;
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

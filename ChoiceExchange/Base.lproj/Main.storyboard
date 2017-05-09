@@ -86,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cdi-A0-1nt" id="r38-Kp-SaL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOh-vb-RrU">
@@ -96,41 +96,60 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PAe-YX-eko">
-                                            <rect key="frame" x="318" y="18" width="51" height="31"/>
+                                            <rect key="frame" x="318" y="10" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switchChanged:" destination="Cdi-A0-1nt" eventType="valueChanged" id="WhK-Qa-Fro"/>
+                                            </connections>
                                         </switch>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="56Z-Nb-z3K">
-                                            <rect key="frame" x="247" y="18" width="51" height="31"/>
+                                            <rect key="frame" x="248" y="10" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="switchChanged:" destination="Cdi-A0-1nt" eventType="valueChanged" id="gg6-CX-d0b"/>
+                                            </connections>
                                         </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnz-SA-6d3">
-                                            <rect key="frame" x="250" y="0.0" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="PAe-YX-eko" secondAttribute="bottom" constant="1" id="Cnh-id-7tr"/>
+                                        <constraint firstItem="bOh-vb-RrU" firstAttribute="centerY" secondItem="r38-Kp-SaL" secondAttribute="centerY" id="SnT-He-Bki"/>
+                                        <constraint firstItem="PAe-YX-eko" firstAttribute="trailing" secondItem="r38-Kp-SaL" secondAttribute="trailingMargin" id="Vh4-nB-opQ"/>
+                                        <constraint firstItem="56Z-Nb-z3K" firstAttribute="centerY" secondItem="PAe-YX-eko" secondAttribute="centerY" id="dub-XN-wB5"/>
+                                        <constraint firstItem="PAe-YX-eko" firstAttribute="leading" secondItem="56Z-Nb-z3K" secondAttribute="trailing" constant="21" id="eSt-3u-4NX"/>
+                                        <constraint firstItem="bOh-vb-RrU" firstAttribute="leading" secondItem="r38-Kp-SaL" secondAttribute="leading" constant="8" id="rgj-WW-avr"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ForeignSwitch" destination="PAe-YX-eko" id="CwZ-vf-kOK"/>
+                                    <outlet property="HomeSwitch" destination="56Z-Nb-z3K" id="x8f-cJ-pk2"/>
+                                    <outlet property="SymbolLabel" destination="bOh-vb-RrU" id="yUA-zD-hoE"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="40" id="EnS-RU-e7l">
+                                <rect key="frame" x="0.0" y="78" width="375" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EnS-RU-e7l" id="HKW-bi-BHP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="39"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s5-yr-Ull">
+                                            <rect key="frame" x="247" y="7" width="51" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Foreign" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKA-wK-epb">
-                                            <rect key="frame" x="321" y="0.0" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Foreign" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhG-mR-pJv">
+                                            <rect key="frame" x="317" y="7" width="58" height="25"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="PAe-YX-eko" secondAttribute="trailing" constant="8" id="OU7-Tw-CXG"/>
-                                        <constraint firstItem="PAe-YX-eko" firstAttribute="leading" secondItem="OKA-wK-epb" secondAttribute="trailing" constant="-45" id="Ug5-La-F0T"/>
-                                        <constraint firstItem="pnz-SA-6d3" firstAttribute="centerX" secondItem="56Z-Nb-z3K" secondAttribute="centerX" id="Vge-wr-F7c"/>
-                                        <constraint firstItem="bOh-vb-RrU" firstAttribute="leading" secondItem="r38-Kp-SaL" secondAttribute="leading" constant="8" id="WpB-DP-2aW"/>
-                                        <constraint firstItem="OKA-wK-epb" firstAttribute="centerX" secondItem="PAe-YX-eko" secondAttribute="centerX" id="cL1-2P-TVE"/>
-                                        <constraint firstItem="bOh-vb-RrU" firstAttribute="centerY" secondItem="r38-Kp-SaL" secondAttribute="centerY" id="gyQ-Kv-QBM"/>
-                                        <constraint firstItem="PAe-YX-eko" firstAttribute="leading" secondItem="56Z-Nb-z3K" secondAttribute="trailing" constant="22" id="nEf-C5-vik"/>
-                                        <constraint firstAttribute="bottom" secondItem="56Z-Nb-z3K" secondAttribute="bottom" id="u49-Ds-HEr"/>
-                                        <constraint firstAttribute="bottom" secondItem="PAe-YX-eko" secondAttribute="bottom" id="w0S-SE-bzc"/>
+                                        <constraint firstAttribute="trailing" secondItem="mhG-mR-pJv" secondAttribute="trailing" id="QC6-zZ-YWh"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2s5-yr-Ull" secondAttribute="bottom" constant="4" id="Ths-Bp-ore"/>
+                                        <constraint firstItem="mhG-mR-pJv" firstAttribute="leading" secondItem="2s5-yr-Ull" secondAttribute="trailing" constant="18" id="dgl-en-tcO"/>
+                                        <constraint firstAttribute="bottom" secondItem="mhG-mR-pJv" secondAttribute="bottom" constant="12" id="k2k-hc-L02"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="ForeignSwitch" destination="PAe-YX-eko" id="NZd-s5-O7k"/>
-                                    <outlet property="HomeSwitch" destination="56Z-Nb-z3K" id="Hmd-Xo-zqM"/>
-                                    <outlet property="SymbolLabel" destination="bOh-vb-RrU" id="yUA-zD-hoE"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
