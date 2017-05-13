@@ -25,19 +25,26 @@ class FavoriteCell: UITableViewCell {
     }
     
     @IBAction func switchChanged(_ sender: UISwitch) {
-        if let table = self.superview as? UITableView {
-            if let indexPath = table.indexPath(for: self) {
-                let data = CurrenciesHolder.Currencies;
-                if(sender == HomeSwitch) {
-                    data.available[indexPath.row].home = HomeSwitch.isOn;
-                    if HomeSwitch.isOn { data.available[indexPath.row].foreign = false; }
+        print("A switch was flipped\n")
+        var view = self.superview
+        while(view != nil) {
+            if let table = view as? UITableView {
+                print("A table superview was found for a switch.\n")
+                if let indexPath = table.indexPath(for: self) {
+                    print("A cell was changed on row \(indexPath.row)\n")
+                    let data = CurrenciesHolder.Currencies;
+                    if(sender == HomeSwitch) {
+                        data.available[indexPath.row].home = HomeSwitch.isOn;
+                        if HomeSwitch.isOn { data.available[indexPath.row].foreign = false; }
+                    }
+                    else if(sender == ForeignSwitch) {
+                        data.available[indexPath.row].foreign = ForeignSwitch.isOn;
+                        if ForeignSwitch.isOn { data.available[indexPath.row].home = false; }
+                    }
                 }
-                else if(sender == ForeignSwitch) {
-                    data.available[indexPath.row].foreign = ForeignSwitch.isOn;
-                    if ForeignSwitch.isOn { data.available[indexPath.row].home = false; }
-                }
+                break;
             }
-            
+            else { view = view?.superview ?? nil }
         }
         if(sender == HomeSwitch && HomeSwitch.isOn && ForeignSwitch.isOn) {
             ForeignSwitch.setOn(false,animated: true);
