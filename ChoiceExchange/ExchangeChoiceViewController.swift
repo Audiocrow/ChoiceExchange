@@ -19,7 +19,35 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var homeSymLabel: UILabel!
     @IBOutlet weak var foreignNumLabel: UILabel!
     @IBOutlet weak var foreignSymLabel: UILabel!
+    var waiting = false
     
+    func sendQuery() {
+        if(waiting == true) { return }
+        let selectedHome = homeChoicePicker.selectedRow(inComponent: 0)
+        let selectedForeign = homeChoicePicker.selectedRow(inComponent: 0)
+        if(selectedHome < homeChoices.count && selectedForeign < foreignChoices.count) {
+            waiting = true
+            let query = "SELECT * FROM yahoo.finance.xchange WHERE pair in (\"\(homeChoices[selectedHome].symbol)\(foreignChoices[selectedForeign].symbol)\")"
+            YQL().query(query) { jsonDict in
+                let queryDict = jsonDict["query"] as! [String:Any]
+                let resultsDict = queryDict["results"] as! [String:Any]
+                let rateDict = resultsDict["rate"] as! [String:Any]
+                let rate: Double? = rateDict["Rate"] as? Double
+                if(rate == nil) { self.foreignNumLabel.text = "Invalid Results." }
+                else {
+                    self.foreignNumLabel.text = String(Double(self.homeNumField.text!)! / rate!)
+                }
+                self.waiting = false
+            };
+        }
+    }
+    @IBAction func updatePressed(_ sender: UIButton) {
+        sendQuery()
+    }
+    
+    override func touchesBegan(_: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         //var fileManager = FileManager()
@@ -62,6 +90,7 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
             foreignSymLabel.text = foreignChoices[didSelectRow].symbol
             foreignNumLabel.text = "Calculating..."
         }
+        sendQuery()
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

@@ -39,8 +39,13 @@ class CurrenciesHolder {
             //Defaults if loading from file failed
             print("Loading of currencies failed, using defaults instead.")
             available.append(Currency("USD", "American dollar", true, false));
+            available.append(Currency("AUD", "Australian dollar", false, true))
             available.append(Currency("EUR", "Euro", true, true));
             available.append(Currency("JPY", "Japanese Yen", false, true));
+            available.append(Currency("BRL", "Brazil Real", false, true))
+            available.append(Currency("MXN", "Mexican Peso", false, true))
+            available.append(Currency("RUB", "Russia Ruble", false, true))
+            available.append(Currency("GBP", "United Kingdom Pound", true, true))
         }
     }
     
