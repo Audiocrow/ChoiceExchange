@@ -11,9 +11,9 @@ import UIKit
 class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var homeChoicePicker: UIPickerView!
-    var homeChoices = ["Red", "Green", "Blue"]
     @IBOutlet weak var foreignChoicePicker: UIPickerView!
-    var foreignChoices = ["Orange", "Teal", "Purple"]
+    var foreignChoices:[Currency] = []
+    var homeChoices:[Currency] = []
     //Selected Choices: homeChoice = homeChoices[homeChoicePicker.selectedRowInComponent(0)]
     
     override func viewDidLoad() {
@@ -24,6 +24,16 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
         homeChoicePicker.delegate = self
         foreignChoicePicker.dataSource = self
         foreignChoicePicker.delegate = self
+        homeChoices = CurrenciesHolder.Currencies.getSubset(true)
+        foreignChoices = CurrenciesHolder.Currencies.getSubset(false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        homeChoices = CurrenciesHolder.Currencies.getSubset(true)
+        foreignChoices = CurrenciesHolder.Currencies.getSubset(false)
+        homeChoicePicker.reloadAllComponents()
+        foreignChoicePicker.reloadAllComponents()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,10 +56,10 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == homeChoicePicker {
-            return homeChoices[row]
+            return homeChoices[row].symbol
         }
         else if pickerView == foreignChoicePicker {
-            return foreignChoices[row]
+            return foreignChoices[row].symbol
         }
         return nil
     }

@@ -13,11 +13,11 @@ struct Currency {
     let description: String;
     var home: Bool; //A selected/favorite home currency?
     var foreign: Bool; //A selected/favorite foreign currency?
-    init(_ symbol:String, _ desc:String) {
+    init(_ symbol:String, _ desc:String, _ home:Bool?, _ foreign:Bool?) {
         self.symbol=symbol;
         self.description=desc;
-        home = false;
-        foreign=false;
+        self.home = home ?? false;
+        self.foreign = foreign ?? false;
     }
 }
 
@@ -25,12 +25,22 @@ class CurrenciesHolder {
     var available=[Currency]();
     static let Currencies = CurrenciesHolder()
     
+    //Get array of Home or Foreign currencies only
+    func getSubset(_ home:Bool)->[Currency] {
+        var result:[Currency] = []
+        for currency in available {
+            if home && currency.home { result.append(currency) }
+            else if !home && currency.foreign { result.append(currency) }
+        }
+        return result
+    }
     private init() {
         if(!load()) {
             //Defaults if loading from file failed
-            available.append(Currency("USD", "American dollar"));
-            available.append(Currency("EUR", "Euro"));
-            available.append(Currency("JPY", "Japanese Yen"));
+            print("Loading of currencies failed, using defaults instead.")
+            available.append(Currency("USD", "American dollar", true, false));
+            available.append(Currency("EUR", "Euro", true, true));
+            available.append(Currency("JPY", "Japanese Yen", false, true));
         }
     }
     
@@ -43,9 +53,7 @@ class CurrenciesHolder {
                         if let currencies = json as? [String: Any] {
                             for (symbol, currencyData) in currencies {
                                 if let currencyDict = currencyData as? [String: Any] {
-                                    var currency = Currency(symbol, currencyDict["Description"] as! String)
-                                    currency.home = currencyDict["Home"] as! Bool
-                                    currency.foreign = currencyDict["Foreign"] as! Bool
+                                    let currency = Currency(symbol, currencyDict["Description"] as! String, currencyDict["Home"] as? Bool, currencyDict["Foreign"] as? Bool)
                                     available.append(currency)
                                 }
                             }
@@ -73,7 +81,7 @@ class CurrenciesHolder {
             do {
                 let json = try JSONSerialization.data(withJSONObject: data, options: [])
                 try json.write(to: path, options: [])
-                print(String(data: json, encoding: String.Encoding.utf8)!)
+                //print(String(data: json, encoding: String.Encoding.utf8)!)
             }
             catch let error { print(error.localizedDescription) }
         }
