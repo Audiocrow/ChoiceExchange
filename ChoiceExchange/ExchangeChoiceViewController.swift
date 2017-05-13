@@ -19,25 +19,31 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     @IBOutlet weak var homeSymLabel: UILabel!
     @IBOutlet weak var foreignNumLabel: UILabel!
     @IBOutlet weak var foreignSymLabel: UILabel!
-    var waiting = false
+    //var waiting = false
     
     func sendQuery() {
-        if(waiting == true) { return }
+        //if(waiting == true) { return }
         let selectedHome = homeChoicePicker.selectedRow(inComponent: 0)
-        let selectedForeign = homeChoicePicker.selectedRow(inComponent: 0)
+        let selectedForeign = foreignChoicePicker.selectedRow(inComponent: 0)
         if(selectedHome < homeChoices.count && selectedForeign < foreignChoices.count) {
-            waiting = true
+            //waiting = true
+            self.foreignNumLabel.text = "Waiting..."
             let query = "SELECT * FROM yahoo.finance.xchange WHERE pair in (\"\(homeChoices[selectedHome].symbol)\(foreignChoices[selectedForeign].symbol)\")"
             YQL().query(query) { jsonDict in
-                let queryDict = jsonDict["query"] as! [String:Any]
-                let resultsDict = queryDict["results"] as! [String:Any]
-                let rateDict = resultsDict["rate"] as! [String:Any]
-                let rate: Double? = rateDict["Rate"] as? Double
+                var queryDict = jsonDict["query"] as! [String:Any]
+                var resultsDict = queryDict["results"] as! [String:Any]
+                var rateDict = resultsDict["rate"] as! [String:Any]
+                var rateString = rateDict["Rate"] as? String
+                var rate = rateString != nil ? Double(rateString!) : nil
                 if(rate == nil) { self.foreignNumLabel.text = "Invalid Results." }
                 else {
-                    self.foreignNumLabel.text = String(Double(self.homeNumField.text!)! / rate!)
+                    if(rate != 0) {
+                        self.foreignNumLabel.text = String(Double(self.homeNumField.text!)! * rate!)
+                    }
+                    else { self.foreignNumLabel.text = "0" }
                 }
-                self.waiting = false
+                //self.waiting = false
+                self.view.setNeedsDisplay()
             };
         }
     }
@@ -58,7 +64,7 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
         foreignChoicePicker.delegate = self
         homeChoices = CurrenciesHolder.Currencies.getSubset(true)
         foreignChoices = CurrenciesHolder.Currencies.getSubset(false)
-        foreignNumLabel.layer.borderWidth = 1.0
+        //foreignNumLabel.layer.borderWidth = 1.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,11 +90,9 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     func pickerView(_ pickerView: UIPickerView, didSelectRow: Int, inComponent: Int) {
         if(pickerView == homeChoicePicker && didSelectRow < homeChoices.count) {
             homeSymLabel.text = homeChoices[didSelectRow].symbol
-            foreignNumLabel.text = "Calculating..."
         }
         else if(pickerView == foreignChoicePicker && didSelectRow < foreignChoices.count) {
             foreignSymLabel.text = foreignChoices[didSelectRow].symbol
-            foreignNumLabel.text = "Calculating..."
         }
         sendQuery()
     }
