@@ -38,12 +38,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcv-9y-SAZ">
-                                <rect key="frame" x="16" y="101" width="150" height="149"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41f-TS-bsY">
-                                <rect key="frame" x="209" y="101" width="150" height="149"/>
+                                <rect key="frame" x="259" y="72" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOn-hy-Pgw">
@@ -56,22 +52,81 @@
                                     <segue destination="pmb-5x-tr0" kind="show" id="XAI-6f-uie"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="=" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwI-IK-fZF">
+                                <rect key="frame" x="182" y="359" width="11" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Calculating..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="nSH-BW-DcE">
+                                <rect key="frame" x="137" y="397" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SYM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="5PX-WD-4UL">
+                                <rect key="frame" x="169" y="446" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3J-CN-8Aw">
+                                <rect key="frame" x="162" y="488" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HKJ-n5-2oD">
+                                <rect key="frame" x="117" y="297" width="49" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="1bI-N0-bl6"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="SYM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="1K0-D3-nhW">
+                                <rect key="frame" x="209" y="302" width="36" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcv-9y-SAZ">
+                                <rect key="frame" x="16" y="64" width="100" height="100"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mOn-hy-Pgw" secondAttribute="bottom" constant="20" id="dlA-Zy-boo"/>
-                            <constraint firstItem="mOn-hy-Pgw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="sIU-OM-mlr"/>
+                            <constraint firstItem="HKJ-n5-2oD" firstAttribute="bottom" secondItem="AwI-IK-fZF" secondAttribute="top" constant="-20" id="8wG-vd-1bk"/>
+                            <constraint firstItem="O3J-CN-8Aw" firstAttribute="centerX" secondItem="5PX-WD-4UL" secondAttribute="centerX" id="Ae7-oU-kED"/>
+                            <constraint firstItem="mOn-hy-Pgw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="BRq-NL-9Yc"/>
+                            <constraint firstItem="HKJ-n5-2oD" firstAttribute="trailing" secondItem="AwI-IK-fZF" secondAttribute="leading" constant="-15" id="BbZ-nE-LmU"/>
+                            <constraint firstItem="5PX-WD-4UL" firstAttribute="top" secondItem="nSH-BW-DcE" secondAttribute="bottom" constant="20" id="CJs-Mb-wxQ"/>
+                            <constraint firstItem="5PX-WD-4UL" firstAttribute="centerX" secondItem="nSH-BW-DcE" secondAttribute="centerX" id="DgR-88-gCS"/>
+                            <constraint firstItem="nSH-BW-DcE" firstAttribute="centerX" secondItem="AwI-IK-fZF" secondAttribute="centerX" id="G2f-FD-FP7"/>
+                            <constraint firstItem="1K0-D3-nhW" firstAttribute="height" secondItem="HKJ-n5-2oD" secondAttribute="height" id="JZG-NE-yYR"/>
+                            <constraint firstItem="AwI-IK-fZF" firstAttribute="top" secondItem="hcv-9y-SAZ" secondAttribute="bottom" constant="75" id="cud-Pm-UUM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mOn-hy-Pgw" secondAttribute="bottom" constant="20" id="gvT-Ep-0ZD"/>
+                            <constraint firstItem="AwI-IK-fZF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mQk-ss-oV0"/>
+                            <constraint firstItem="1K0-D3-nhW" firstAttribute="leading" secondItem="AwI-IK-fZF" secondAttribute="trailing" constant="15" id="nVk-jF-xII"/>
+                            <constraint firstItem="1K0-D3-nhW" firstAttribute="bottom" secondItem="HKJ-n5-2oD" secondAttribute="bottom" id="su3-Qv-HmY"/>
+                            <constraint firstItem="nSH-BW-DcE" firstAttribute="top" secondItem="AwI-IK-fZF" secondAttribute="bottom" constant="20" id="uR8-jj-5i5"/>
+                            <constraint firstItem="nSH-BW-DcE" firstAttribute="height" secondItem="HKJ-n5-2oD" secondAttribute="height" id="uUN-ST-HbP"/>
+                            <constraint firstItem="O3J-CN-8Aw" firstAttribute="top" secondItem="5PX-WD-4UL" secondAttribute="bottom" constant="30" id="wuu-Hp-MUO"/>
+                            <constraint firstItem="5PX-WD-4UL" firstAttribute="height" secondItem="1K0-D3-nhW" secondAttribute="height" id="ylp-jZ-ZOe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="View Exchange Rates" id="p7Y-jk-F3r"/>
                     <connections>
                         <outlet property="HomeChoicePicker" destination="hcv-9y-SAZ" id="Ynb-2S-W5h"/>
                         <outlet property="foreignChoicePicker" destination="41f-TS-bsY" id="g7a-u9-zPv"/>
+                        <outlet property="foreignNumLabel" destination="nSH-BW-DcE" id="9ab-jr-o80"/>
+                        <outlet property="foreignSymLabel" destination="5PX-WD-4UL" id="sNw-o5-DZS"/>
+                        <outlet property="homeNumField" destination="HKJ-n5-2oD" id="D82-Yh-k11"/>
+                        <outlet property="homeSymLabel" destination="1K0-D3-nhW" id="AYk-uG-7M1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="727" y="36"/>
+            <point key="canvasLocation" x="725.60000000000002" y="35.532233883058474"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="0ic-W5-DcG">

@@ -15,6 +15,10 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     var foreignChoices:[Currency] = []
     var homeChoices:[Currency] = []
     //Selected Choices: homeChoice = homeChoices[homeChoicePicker.selectedRowInComponent(0)]
+    @IBOutlet weak var homeNumField: UITextField!
+    @IBOutlet weak var homeSymLabel: UILabel!
+    @IBOutlet weak var foreignNumLabel: UILabel!
+    @IBOutlet weak var foreignSymLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,7 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
         foreignChoicePicker.delegate = self
         homeChoices = CurrenciesHolder.Currencies.getSubset(true)
         foreignChoices = CurrenciesHolder.Currencies.getSubset(false)
+        foreignNumLabel.layer.borderWidth = 1.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +39,12 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
         foreignChoices = CurrenciesHolder.Currencies.getSubset(false)
         homeChoicePicker.reloadAllComponents()
         foreignChoicePicker.reloadAllComponents()
+        if(homeChoicePicker.selectedRow(inComponent:0) < homeChoices.count) {
+            homeSymLabel.text = homeChoices[homeChoicePicker.selectedRow(inComponent:0)].symbol
+        }
+        if(foreignChoicePicker.selectedRow(inComponent:0) < foreignChoices.count) {
+            foreignSymLabel.text = foreignChoices[foreignChoicePicker.selectedRow(inComponent:0)].symbol
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +53,16 @@ class ExchangeChoiceViewController: UIViewController, UIPickerViewDataSource, UI
     }
 
     //MARK: UIPickerViewDelegate
+    func pickerView(_ pickerView: UIPickerView, didSelectRow: Int, inComponent: Int) {
+        if(pickerView == homeChoicePicker && didSelectRow < homeChoices.count) {
+            homeSymLabel.text = homeChoices[didSelectRow].symbol
+            foreignNumLabel.text = "Calculating..."
+        }
+        else if(pickerView == foreignChoicePicker && didSelectRow < foreignChoices.count) {
+            foreignSymLabel.text = foreignChoices[didSelectRow].symbol
+            foreignNumLabel.text = "Calculating..."
+        }
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
